@@ -27,31 +27,7 @@ pipeline {
                  
             }
         }
-                 stage('Docker build')
-        {
-            steps {
-                 sh 'docker buildx build -t wiemj/jouiniwiem5bi6-kadem .'
-            }
-        }
-        stage('Docker login')
-        {
-            steps {
-                sh 'echo $dockerhub_PSW | docker login -u wiemj -p dckr_pat_eQvpmvgdMnFnRpzIgY9MFl882S8'
-            }    
+              
        
-        }
-      stage('Push') {
-
-			steps {
-				sh 'docker push wiemj/jouiniwiem5bi6-kadem'
-			}
-		}
-       
-        
-             stage('Cleaning up') {
-         steps {
-			sh "docker rmi -f wiemj/jouiniwiem5bi6-kadem"
-         }
-     } 
    }
 }
