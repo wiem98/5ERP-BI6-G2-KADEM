@@ -6,7 +6,7 @@ pipeline {
                    
                 steps{
                         echo 'Pulling...';
-                        git branch: 'main',
+                        git branch: 'WiemJouini-5BI6-G2',
                         url : 'https://github.com/wiem98/5ERP-BI6-G2-KADEM.git';
                          sh """mvn -version"""
                     }
