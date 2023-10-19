@@ -27,6 +27,12 @@ pipeline {
                  
             }
         }
+		stage('NEXUS') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+                  
+            }
+        }
                stage('Mvn SonarQube ') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
