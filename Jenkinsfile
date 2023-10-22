@@ -5,17 +5,16 @@ pipeline {
                 stage('Checkout Git'){
                    
                 steps{
-                        echo 'Pulling...';
+                        echo 'clonning...';
                         git branch: 'NourKchaou-5BI6-G2',
                         url : 'https://github.com/wiem98/5ERP-BI6-G2-KADEM.git';
-                         sh """mvn -version"""
                     }
                 }
        
         
      
           
-        stage('Mvn Compile&Mvn Clean') {
+        stage('Mvn Compile Clean') {
             steps {
                     sh 'mvn clean'
                 sh 'mvn compile'
