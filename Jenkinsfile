@@ -27,6 +27,11 @@ pipeline {
                  
             }
         }
+		stage('Clean Workspace') {
+ 		   steps {
+    		    deleteDir() // Clean up the workspace
+ 		   }
+		}
 		stage('NEXUS') {
             steps {
                 sh 'mvn deploy -DskipTests'
