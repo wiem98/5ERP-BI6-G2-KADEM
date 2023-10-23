@@ -27,6 +27,14 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarqube'
             }
         }
-       
+       stage('Nexus Deployment') {
+    steps {
+        script {
+            echo 'Deploying to Nexus...'
+            sh 'mvn deploy -DskipTests'
+        }
+    }
+}
+
    }
 }
