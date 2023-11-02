@@ -15,7 +15,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-public class EquipeServiceImpl {
+public class EquipeServiceImplTest {
 
     @InjectMocks
     private tn.esprit.spring.kaddem.services.EquipeServiceImpl equipeService;
