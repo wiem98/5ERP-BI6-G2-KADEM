@@ -5,29 +5,33 @@ pipeline {
                 stage('Checkout Git'){
                    
                 steps{
-                        echo 'Pulling...';
+                      echo 'Pulling...';
                         git branch: 'WiemJouini-5BI6-G2',
                         url : 'https://github.com/wiem98/5ERP-BI6-G2-KADEM.git';
                          sh """mvn -version"""
                     }
                 }
        
-        
-       stage('Testing maven') {
+        stage('Testing maven') {
             steps {
                 sh """mvn -version"""
                  
             }
         }
-        stage('Mvn Compile&Mvn Clean') {
+       
+        stage('Mvn Clean') {
             steps {
-                    sh 'mvn clean'
-                sh 'mvn compile'
-		    sh 'mvn package'
+                sh 'mvn clean'
                  
             }
         }
-	 stage('JUnit and Mockito Test'){
+        stage('Mvn Compile') {
+            steps {
+                sh 'mvn compile'
+                 
+            }
+        }
+         stage('JUnit and Mockito Test'){
             steps{
                 script
                 {
@@ -43,18 +47,51 @@ pipeline {
             }
        
         }
+
+        stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fares123'
+            }
+        }
 		
-		stage('NEXUS') {
+       stage('Docker build')
+        {
+            steps {
+                 sh 'sudo docker build -t faffousa/tpachat  .'
+            }
+        }
+        stage('Docker login')
+        {
+            steps {
+                sh 'echo $dockerhub_PSW | docker login -u faffousa -p dckr_pat_9f0g2XMz_iBfcGOGIsOL0EqpP_g'
+            }    
+       
+        }
+      stage('Push') {
+
+			steps {
+				sh 'docker push faffousa/tpachat'
+			}
+		}
+       
+        
+       stage('Run app With DockerCompose') {
+              steps {
+                  sh "docker-compose -f docker-compose.yml up -d  "
+              }
+              }
+		
+		    		 stage('NEXUS') {
             steps {
                 sh 'mvn deploy -DskipTests'
                   
             }
         }
-		 stage('Mvn SonarQube ') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-            }
-        }
-	}
-}
-		
+             stage('Cleaning up') {
+         steps {
+			sh "docker rmi -f faffousa/tpachat"
+         }
+     } 
+   
+    }
+    }
