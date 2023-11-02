@@ -27,7 +27,20 @@ pipeline {
                  
             }
         }
-
+	stage('JUnit and Mockito Test'){
+  	          steps{
+          		      script
+           		     {
+           	         if (isUnix())
+              			      {
+                		        sh 'mvn --batch-mode test'
+                    		}
+                    else
+                    {
+                        bat 'mvn --batch-mode test'
+                    }
+                }
+            }
 		
 		stage('NEXUS') {
             steps {
