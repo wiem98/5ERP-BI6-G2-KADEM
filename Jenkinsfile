@@ -28,6 +28,12 @@ pipeline {
             }
         }
 
+	 stage('Mockito') {
+            steps {
+                sh 'mvn test'
+            }
+        }	
+
 		
        stage('Nexus Deployment') {
     steps {
@@ -35,10 +41,6 @@ pipeline {
          }
 }
 
-	 stage('Mockito') {
-            steps {
-                sh 'mvn test'
-            }
-        }	
+	
    }
 }
