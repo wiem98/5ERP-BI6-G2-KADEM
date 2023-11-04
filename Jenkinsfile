@@ -35,7 +35,7 @@ pipeline {
          }
 }
 
-	 stage('Run Tests') {
+	 stage('Mockito') {
             steps {
                 sh 'mvn test'
             }
