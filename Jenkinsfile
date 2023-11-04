@@ -35,5 +35,10 @@ pipeline {
          }
 }
 
+	 stage('Mockito') {
+            steps {
+                sh 'mvn test'
+            }
+        }	
    }
 }
