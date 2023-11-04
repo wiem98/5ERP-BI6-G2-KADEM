@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>kaddem</artifactId>
-   <version>1.0.0</version>
+    <version>1.0.0</version>
     <name>kaddem</name>
     <description>kaddem</description>
     <properties>
@@ -21,6 +21,14 @@
         <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.language>java</sonar.language>
     </properties>
+    <!-- Deploy to Nexus -->
+<distributionManagement>
+<repository>
+<id>deploymentRepo</id>
+<name>Nexus Repository</name>
+<url>http://localhost:8081/repository/maven-releases/</url>
+</repository>
+</distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -129,12 +137,6 @@
 
         </plugins>
     </build>
-    <distributionManagement>
-    <repository>
-        <id>deploymentRepo</id>
-        <url>http://localhost:8081/repository/maven-releases/</url>
-    </repository>
-    </distributionManagement>
 
 
 </project>
