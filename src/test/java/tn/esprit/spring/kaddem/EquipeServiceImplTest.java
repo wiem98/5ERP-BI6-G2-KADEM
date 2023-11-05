@@ -2,10 +2,12 @@ package tn.esprit.spring.kaddem;/* package tn.esprit.spring.kaddem.services;*/
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.kaddem.entities.Equipe;
 import tn.esprit.spring.kaddem.repositories.EquipeRepository;
@@ -14,7 +16,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class EquipeServiceImplTest {
 
     @InjectMocks
@@ -30,7 +32,7 @@ public class EquipeServiceImplTest {
 
     @Test
     public void testAddEquipe() {
-        Equipe equipe = new Equipe(/* Initialize with necessary data */);
+        Equipe equipe = new Equipe("test equipe");
 
         Mockito.when(equipeRepository.save(Mockito.any(Equipe.class))).thenReturn(equipe);
 
@@ -43,7 +45,7 @@ public class EquipeServiceImplTest {
     @Test
     public void testRetrieveEquipe() {
         int equipeId = 1; // Initialize with an existing equipe ID for testing
-        Equipe equipe = new Equipe(/* Initialize with necessary data */);
+        Equipe equipe = new Equipe("test equipe");
 
         Mockito.when(equipeRepository.findById(equipeId)).thenReturn(Optional.of(equipe));
 
@@ -56,7 +58,7 @@ public class EquipeServiceImplTest {
     @Test
     public void testUpdateEquipe() {
         int equipeId = 1; // Initialize with an existing equipe ID for testing
-        Equipe equipe = new Equipe(/* Initialize with necessary data */);
+        Equipe equipe =new Equipe("test equipe");
 
         Mockito.when(equipeRepository.findById(equipeId)).thenReturn(Optional.of(equipe));
         Mockito.when(equipeRepository.save(Mockito.any(Equipe.class))).thenReturn(equipe);
@@ -70,7 +72,7 @@ public class EquipeServiceImplTest {
     @Test
     public void testDeleteEquipe() {
         int equipeId = 1; // Initialize with an existing equipe ID for testing
-        Equipe equipe = new Equipe(/* Initialize with necessary data */);
+        Equipe equipe = new Equipe("test equipe");
 
         Mockito.when(equipeRepository.findById(equipeId)).thenReturn(Optional.of(equipe));
 
