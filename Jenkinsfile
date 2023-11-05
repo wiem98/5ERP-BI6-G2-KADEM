@@ -27,7 +27,7 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarqube'
             }
         }
-
+		
 	 stage('Mockito') {
             steps {
                 sh 'mvn test'
