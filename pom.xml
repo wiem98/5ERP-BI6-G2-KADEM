@@ -10,12 +10,20 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>kaddem</artifactId>
-   <version>1.0.0</version>
+    <version>0.0.1</version>
     <name>kaddem</name>
     <description>kaddem</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <!-- Deploy to Nexus -->
+<distributionManagement>
+<repository>
+<id>deploymentRepo</id>
+<name>Nexus Repository</name>
+<url>http://localhost:8081/repository/maven-releases/</url>
+</repository>
+</distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -47,24 +55,6 @@
             <version>1.6.9</version>
         </dependency>
 
-
-            <!-- ... Autres dépendances ... -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version> <!-- Vous pouvez utiliser une version plus récente si nécessaire -->
-                <scope>test</scope>
-            </dependency>
-
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.0.0</version> <!-- Utilisez la version la plus récente -->
-            <scope>test</scope>
-        </dependency>
-
-
     </dependencies>
 
     <build>
@@ -81,23 +71,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version> <!-- Vous pouvez utiliser une version plus récente si nécessaire -->
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-    <repository>
-        <id>deploymentRepo</id>
-        <url>http://localhost:8081/repository/maven-releases/</url>
-    </repository>
-    </distributionManagement>
 
 </project>
