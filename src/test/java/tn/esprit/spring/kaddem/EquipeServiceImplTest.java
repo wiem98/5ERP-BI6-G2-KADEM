@@ -55,19 +55,20 @@ public class EquipeServiceImplTest {
         // Add more assertions as needed to check if the retrieved equipe is as expected.
     }
 
-    @Test
-    public void testUpdateEquipe() {
-        int equipeId = 1; // Initialize with an existing equipe ID for testing
-        Equipe equipe =new Equipe("test equipe");
+   @Test
+public void testUpdateEquipe() {
+    int equipeId = 1; // Initialize with an existing equipe ID for testing
+    Equipe equipe = new Equipe("test equipe");
 
-        Mockito.when(equipeRepository.findById(equipeId)).thenReturn(Optional.of(equipe));
-        Mockito.when(equipeRepository.save(Mockito.any(Equipe.class))).thenReturn(equipe);
+    // Instead of stubbing findById here, use it within the test logic
+    Mockito.when(equipeRepository.save(Mockito.any(Equipe.class))).thenReturn(equipe);
 
-        Equipe updatedEquipe = equipeService.updateEquipe(equipe);
+    // Call the method that should use the findById method
+    Equipe updatedEquipe = equipeService.updateEquipe(equipeId);
 
-        assertNotNull(updatedEquipe);
-        // Add more assertions as needed to check if the updated equipe is as expected.
-    }
+    assertNotNull(updatedEquipe);
+    // Add more assertions as needed to check if the updated equipe is as expected.
+}
 
     @Test
     public void testDeleteEquipe() {
