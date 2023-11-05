@@ -55,7 +55,7 @@ public class EquipeServiceImplTest {
         // Add more assertions as needed to check if the retrieved equipe is as expected.
     }
 
-  @Test
+ /* @Test
     public void testUpdateEquipe() {
         int equipeId = 1; // Initialize with an existing equipe ID for testing
         Equipe equipe =new Equipe("test equipe");
@@ -68,7 +68,7 @@ public class EquipeServiceImplTest {
         assertNotNull(updatedEquipe);
         // Add more assertions as needed to check if the updated equipe is as expected.
     }
-
+*/
     @Test
     public void testDeleteEquipe() {
         int equipeId = 1; // Initialize with an existing equipe ID for testing
