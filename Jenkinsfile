@@ -31,6 +31,13 @@ pipeline {
                  
             }
         }
+		
+	 stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fares123'
+            }
+        }
+		
          stage('JUnit and Mockito Test'){
             steps{
                 script
@@ -48,11 +55,7 @@ pipeline {
        
         }
 
-        stage('SonarQube analysis 1') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fares123'
-            }
-        }
+       
 		
        stage('Docker build')
         {
