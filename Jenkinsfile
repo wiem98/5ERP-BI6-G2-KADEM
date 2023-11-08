@@ -55,14 +55,7 @@ pipeline {
        
         }
 
-			stage('Sending email'){
-           steps {
-            mail bcc: '', body: '''Hello from Wiem,
-            Devops Pipeline with success.
-            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'wiem.jouini@esprit.tn'
-            }
-       }
-       
+		
 		
     		 stage('NEXUS') {
             steps {
@@ -103,7 +96,13 @@ pipeline {
          }
      } 
 	
-       
+       	stage('Sending email'){
+           steps {
+            mail bcc: '', body: '''Hello from Wiem,
+            Devops Pipeline with success.
+            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'wiem.jouini@esprit.tn'
+            }
+       }
     
    
     }
