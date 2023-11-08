@@ -64,6 +64,12 @@ pipeline {
        }
        
 		
+    		 stage('NEXUS') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+                  
+            }
+        }
        stage('Docker build')
         {
             steps {
@@ -91,12 +97,6 @@ pipeline {
               }
               }
 		
-		    		 stage('NEXUS') {
-            steps {
-                sh 'mvn deploy -DskipTests'
-                  
-            }
-        }
              stage('Cleaning up') {
          steps {
 			sh "docker rmi -f wiemj/wiemjouini-5bi6-g2-kadem"
