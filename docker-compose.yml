@@ -11,6 +11,7 @@ services:
    volumes:
       - db:/var/lib/mysql
  app:
+  image: wiemj/wiemjouini-5bi6-g2-kadem
    depends_on:
      - mysqldb
    build: .
