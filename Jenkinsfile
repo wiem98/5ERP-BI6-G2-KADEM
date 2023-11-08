@@ -34,7 +34,7 @@ pipeline {
 		
 	 stage('SonarQube analysis 1') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fares123'
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
 		
@@ -60,20 +60,20 @@ pipeline {
        stage('Docker build')
         {
             steps {
-                 sh 'sudo docker build -t faffousa/tpachat  .'
+                 sh 'sudo docker build -t wiemj/wiemjouini-5bi6-g2-kadem  .'
             }
         }
         stage('Docker login')
         {
             steps {
-                sh 'echo $dockerhub_PSW | docker login -u faffousa -p dckr_pat_9f0g2XMz_iBfcGOGIsOL0EqpP_g'
+                sh 'echo $dockerhub_PSW | docker login -u  -p dckr_pat_EUS3Ia-YigSb84GwWyUuXn59oTY'
             }    
        
         }
       stage('Push') {
 
 			steps {
-				sh 'docker push faffousa/tpachat'
+				sh 'docker push wiemj/wiemjouini-5bi6-g2-kadem'
 			}
 		}
        
@@ -92,9 +92,18 @@ pipeline {
         }
              stage('Cleaning up') {
          steps {
-			sh "docker rmi -f faffousa/tpachat"
+			sh "docker rmi -f wiemj/wiemjouini-5bi6-g2-kadem"
          }
      } 
+		stage('Sending email'){
+           steps {
+            mail bcc: '', body: '''Hello from Wiem,
+            Devops Pipeline with success.
+            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'wiem.jouini@esprit.tn'
+            }
+       }
+       
+    }
    
     }
     }
