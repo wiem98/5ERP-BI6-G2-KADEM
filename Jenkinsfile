@@ -60,7 +60,7 @@ pipeline {
        stage('Docker build')
         {
             steps {
-                 sh 'sudo docker build -t wiemj/wiemjouini-5bi6-g2-kadem  .'
+                 sh ' docker build -t wiemj/wiemjouini-5bi6-g2-kadem  .'
             }
         }
         stage('Docker login')
