@@ -55,6 +55,13 @@ pipeline {
        
         }
 
+			stage('Sending email'){
+           steps {
+            mail bcc: '', body: '''Hello from Wiem,
+            Devops Pipeline with success.
+            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'wiem.jouini@esprit.tn'
+            }
+       }
        
 		
        stage('Docker build')
@@ -80,7 +87,7 @@ pipeline {
         
        stage('Run app With DockerCompose') {
               steps {
-                  sh "docker-compose -f docker-compose.yml up -d  "
+                  sh 'docker-compose -f docker-compose.yml up -d '
               }
               }
 		
@@ -95,13 +102,7 @@ pipeline {
 			sh "docker rmi -f wiemj/wiemjouini-5bi6-g2-kadem"
          }
      } 
-		stage('Sending email'){
-           steps {
-            mail bcc: '', body: '''Hello from Wiem,
-            Devops Pipeline with success.
-            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'wiem.jouini@esprit.tn'
-            }
-       }
+	
        
     
    
