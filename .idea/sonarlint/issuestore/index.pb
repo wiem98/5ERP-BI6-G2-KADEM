@@ -15,3 +15,7 @@ l
 <src/main/java/tn/esprit/spring/kaddem/KaddemApplication.java,8\1\818208cca585c231b09f53a0c9018ecb6a93896f
 V
 &src/test/java/EtudiantServiceTest.java,c\1\c1e5c0a328e318d03ddb35278f428bb9e537e133
+x
+Hsrc/main/java/tn/esprit/spring/kaddem/repositories/EquipeRepository.java,f\8\f888df89e3d665fb13a022e447b093a50c775e60
+z
+Jsrc/main/java/tn/esprit/spring/kaddem/repositories/EtudiantRepository.java,9\2\9238cf4f8c80e784c0c5f0ce4a6e9847918670ae
