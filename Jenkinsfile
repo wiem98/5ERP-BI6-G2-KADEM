@@ -40,7 +40,11 @@ pipeline {
             sh 'mvn deploy -DskipTests'
          }
 }
-
+	stage('Docker Image') {
+            steps {
+                sh 'docker build -t nourkchaou/nourkchaou-5bi6-wiem-kaddem .'
+            }
+        }
 	
    }
 }
