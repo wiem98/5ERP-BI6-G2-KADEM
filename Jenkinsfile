@@ -51,5 +51,13 @@ pipeline {
                 sh 'docker push nourkchaou/nourkchaou-5bi6-wiem-kaddem'
             }
         }
+
+	stage('Run Docker Compose') {
+    steps {
+        sh 'docker-compose up -d'
+    }
+}
+
+
    }
 }
