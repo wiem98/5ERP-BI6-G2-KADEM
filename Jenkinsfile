@@ -54,7 +54,6 @@ pipeline {
 
 stage('Run Docker Compose') {
     steps {
-        // Utilisez le chemin complet vers docker-compose.yml
         sh 'docker-compose -f "D:/bureau/5BI6/Devops coef 2/new/5ERP-BI6-G2-KADEM/docker-compose.yml" up -d'
     }
 }
