@@ -12,7 +12,7 @@ services:
       - db:/var/lib/mysql
 
   app:
-    image: nourkchaou-5bi6-wiem-kaddem
+    image: nourkchaou-5bi6-wiem-kaddem:1.0.0
     depends_on:
       - mysqldb
     build: .
