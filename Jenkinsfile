@@ -45,6 +45,11 @@ pipeline {
                 sh 'docker build -t nourkchaou/nourkchaou-5bi6-wiem-kaddem .'
             }
         }
-	
+	  stage('Docker Hub') {
+            steps {
+		 sh 'echo $dockerhub_PSW | docker login -u nourkchaou -p dckr_pat_FYPQ_xvO1Fko8uYgY4muC80uXmg
+                sh 'docker push nourkchaou/nourkchaou-5bi6-wiem-kaddem'
+            }
+        }
    }
 }
