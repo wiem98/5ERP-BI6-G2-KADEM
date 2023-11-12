@@ -1,0 +1,16 @@
+
+y
+java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "listEquipes".(Ğ›•¦
+y
+java:S1488 "^Immediately return this expression instead of assigning it to the temporary variable "equipe".(‚ÒÔ™şÿÿÿÿ
+t
+java:S1488-"^Immediately return this expression instead of assigning it to the temporary variable "equipe".(åõƒ
+[
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(¹Îò­úÿÿÿÿ
+[
+java:S4684,"@Replace this persistent entity with a simple POJO or DTO object.(ˆÒ¡İşÿÿÿÿ
+X	java:S1253"<This block of commented-out lines of code should be removed.(ı¸Òß8”ˆİ´»1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8”ˆİ´»1
+r
+java:S1128"PRemove this unused import 'org.springframework.scheduling.annotation.Scheduled'.(‚¡®Üûÿÿÿÿ8”ˆİ´»1

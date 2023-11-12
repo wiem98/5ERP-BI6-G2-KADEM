@@ -1,0 +1,15 @@
+
+Y
+java:S3655%"7Call "Optional#isPresent()" before accessing the value.(µ°Õ÷ûÿÿÿÿ8éÚ´»1
+X	java:S125,"<This block of commented-out lines of code should be removed.(È‹ç8ğÚ´»1
+b
+java:S1128"ERemove this unused import 'tn.esprit.spring.kaddem.entities.Contrat'.(Á£³æ8âÚÛ´»1
+c
+java:S1128	"FRemove this unused import 'tn.esprit.spring.kaddem.entities.Etudiant'.(…÷Ñ¤8âÚÛ´»1
+a
+java:S1128
+"DRemove this unused import 'tn.esprit.spring.kaddem.entities.Niveau'.(Î¤…•8ãÚÛ´»1
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ãÚÛ´»1
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8ãÚÛ´»1

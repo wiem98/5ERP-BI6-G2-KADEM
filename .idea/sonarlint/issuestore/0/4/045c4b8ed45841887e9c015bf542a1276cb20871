@@ -1,0 +1,10 @@
+
+r	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïù»”üÿÿÿÿ8ìœÏ´»1
+r	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±‡Ìúÿÿÿÿ8ìœÏ´»1
+r	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö§”ƒúÿÿÿÿ8ìœÏ´»1
+f
+java:S2184\"DCast one of the operands of this subtraction operation to a "float".(ïù»”üÿÿÿÿ8íœÏ´»1
+D
+java:S11256"'Remove the unnecessary boolean literal.(•ªÉÓ8·Ï´»1
+]	java:S125D"<This block of commented-out lines of code should be removed.(Çúˆ¼şÿÿÿÿ8»Ï´»1
+]	java:S125j"<This block of commented-out lines of code should be removed.(…ÂĞÇûÿÿÿÿ8½Ï´»1
