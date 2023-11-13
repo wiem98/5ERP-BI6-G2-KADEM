@@ -5,6 +5,10 @@ r	java:S117^"QRename this local variable to match the regular expression '^[a-
 f
 java:S2184\"DCast one of the operands of this subtraction operation to a "float".(ïù»”üÿÿÿÿ8íœÏ´»1
 D
+java:S1905"'Remove this unnecessary cast to "List".(ìÂ‘¬8ÕÈï¢¼1
+`
+java:S11554">Use isEmpty() to check whether the collection is empty or not.(³òğÉùÿÿÿÿ8ğÈï¢¼1
+D
 java:S11256"'Remove the unnecessary boolean literal.(•ªÉÓ8·Ï´»1
 ]	java:S125D"<This block of commented-out lines of code should be removed.(Çúˆ¼şÿÿÿÿ8»Ï´»1
 ]	java:S125j"<This block of commented-out lines of code should be removed.(…ÂĞÇûÿÿÿÿ8½Ï´»1
