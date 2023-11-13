@@ -13,7 +13,7 @@ services:
   kaddemProject:
     depends_on:
       - mysqldb
-    image: bentibahedi / alpine
+    image:bentibahedi/bentibahedi-5bi6-kadem
     environment:
       MYSQL_ROOT_PASSWORD: ""
     ports:
