@@ -1,7 +1,7 @@
 version: '3'
 services:
   kaddem:
-    image: bentibahedi-5bi6-kadem
+    image: bentibahedi-5bi6-kadem:latest
     restart: on-failure
     ports:
       - '8089:8089'
