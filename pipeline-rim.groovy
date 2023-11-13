@@ -108,8 +108,8 @@ Rim''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rim.boukari@
                     echo "deploying the application"
                     withCredentials([usernamePassword(credentialsId:'dockerhub',usernameVariable:'USER',passwordVariable:'PWD')]) {
                         sh "echo $PWD | docker login -u $USER --password-stdin"
-                        sh "docker build -t rimboukari/spring-app:1.0 ."
-                        sh "docker push rimboukari/spring-app:1.0"
+                        sh "docker build -t rimboukari2/spring-app:1.0 ."
+                        sh "docker push rimboukari2/spring-app:1.0"
 
                     }
                 }
