@@ -1,10 +1,10 @@
 
-b
-java:S2259@"@A "NullPointerException" could be thrown; "eq" is nullable here.(“³›üûÿÿÿÿ8½ëÜº1
-a
-java:S2259?"?A "NullPointerException" could be thrown; "c" is nullable here.(ÄëÖ’øÿÿÿÿ8ş¼ëÜº1
 c
 java:S22598"FA "NullPointerException" could be thrown; "etudiant" is nullable here.(À÷Òˆ8€½ëÜº1
+a
+java:S2259?"?A "NullPointerException" could be thrown; "c" is nullable here.(ÄëÖ’øÿÿÿÿ8ş¼ëÜº1
+b
+java:S2259@"@A "NullPointerException" could be thrown; "eq" is nullable here.(“³›üûÿÿÿÿ8½ëÜº1
 Y
 java:S3655-"7Call "Optional#isPresent()" before accessing the value.(Ö²Ğ”ıÿÿÿÿ8‚½ëÜº1
 L
