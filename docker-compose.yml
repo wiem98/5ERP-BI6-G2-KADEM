@@ -19,7 +19,7 @@ services:
     image: rihab2023/5erp-bi6-g2-kadem:latest
     container_name: springboot-app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://192.168.4.222:3306/khademApp?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://192.168.4.222:3306/kademApp?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       MYSQL_HOST: mysql-db
