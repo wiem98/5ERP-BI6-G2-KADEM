@@ -59,7 +59,8 @@ pipeline {
 		stage("Docker Build and Push ") {
             steps {
                 
-                sh 'docker build -t  bentibahedi/bentibahedi-5bi6-kadem .'
+                sh 'docker build -t  bentibahedi-5bi6-kadem .'
+		sh  "docker tag bentibahedi-5bi6-kadem bentibahedi/bentibahedi-5bi6-kadem:latest"
                 sh "docker login -u bentibahedi -p Taraji1919"
                 sh 'docker push  bentibahedi/bentibahedi-5bi6-kadem '
                 
