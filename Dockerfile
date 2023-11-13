@@ -1,4 +1,4 @@
 FROM openjdk:11-jdk
 EXPOSE 8089
-ADD ./target/KaddemProject-1.0.jar KaddemProject-1.0.jar
+ADD out/artifacts/kaddem_jar/kaddem.jar /app/kaddem.jar
 ENTRYPOINT ["java","-jar","/KaddemProject-1.0.jar"]
