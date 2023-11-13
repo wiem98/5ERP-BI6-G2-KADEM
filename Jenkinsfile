@@ -60,7 +60,7 @@ pipeline {
             steps {
                 
                 sh 'docker build -t  bentibahedi/bentibahedi-5bi6-kadem .'
-                sh "docker login -u bentibahedi -p Taraji1919"
+				sh "docker login -u hedi.bentiba@esprit.tn -p Taraji1919"
                 sh 'docker push  bentibahedi/bentibahedi-5bi6-kadem '
                 
             }
