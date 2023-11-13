@@ -70,6 +70,27 @@ pipeline {
 				sh "docker login -u hedi.bentiba@esprit.tn -p Taraji1919"
 				sh 'docker-compose up -d'
 			}
+			post {
+            success {
+                echo 'Success!'
+                mail(
+                    bcc: "",
+                    body: 'Welcome To DevOps project Kaddem : Success on Pipeline Hedi Bentiba',
+                    subject: 'Success build',
+                    to: 'hedi.bentiba@esprit.tn'
+                )
+            }
+           
+            failure {
+                mail(
+                    bcc: "",
+                    body: 'Maven commands failed',
+                    subject: 'Failed',
+                    to: 'hedi.bentiba@esprit.tn'
+                )
+            }
+           
+        }
 		}
 	 
 		
