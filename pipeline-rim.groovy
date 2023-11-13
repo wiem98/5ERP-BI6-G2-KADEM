@@ -63,30 +63,7 @@ pipeline {
             }
         }
 
-//        stage("Deploying jar to Nexus Repository") {
-//            steps {
-//                script {
-//                    script {
-//                        def mvnHome = tool name: 'maven-3', type: 'maven'
-//                        def groupId = 'tn.esprit' // Replace with your project's group ID
-//                        def artifactId = 'kaddem' // Replace with your project's artifact ID
-//                        def version = '0.0.1-SNAPSHOT' // Replace with the version of your artifact
-//                        def packaging = 'jar' // Replace with the packaging type if different
-//
-//                        sh """
-//                ${mvnHome}/bin/mvn deploy
-//                -Durl=${env.NEXUS_PROTOCOL}://${env.NEXUS_URL}/repository/${env.NEXUS_REPOSITORY}/
-//                -DrepositoryId=${env.NEXUS_REPOSITORY}
-//                -DgroupId=${groupId}
-//                -DartifactId=${artifactId}
-//                -Dversion=${version}
-//                -Dpackaging=${packaging}
-//                -Dfile=target/${artifactId}-${version}.${packaging}
-//            """
-//                    }
-//                }
-//            }
-//        }
+
 
         stage("publish to nexus") {
             steps {
@@ -100,7 +77,7 @@ pipeline {
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
                             groupId: 'tn.esprit',
-                            version: '0.0.1-SNAPSHOT',
+                            version: '1.0.0',
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
