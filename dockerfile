@@ -8,7 +8,7 @@ EXPOSE 8089
 #ADD /target/KaddemApplication-1.0.0.jar KaddemApplication.jar
 #ADD tn/esprit/spring/kaddem/1.0.0/kaddem-1.0.0.jar app.jar
 #ADD target/KaddemApplication-1.0.0.jar KaddemApplication.jar
-ADD http://192.168.101.4:8081/repository/maven-releases/tn/esprit/spring/kaddem/1.0.0/kaddem-1.0.0.jar app.jar
+ADD http://192.168.101.7:8081/repository/maven-releases/tn/esprit/spring/kaddem/1.0.0/kaddem-1.0.0.jar app.jar
 # Commande pour démarrer l'application lorsque le conteneur est exécuté
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
