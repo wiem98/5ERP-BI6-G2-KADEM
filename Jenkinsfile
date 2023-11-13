@@ -12,21 +12,11 @@ pipeline {
                     }
                 }
 		
-       
-        
-     
           
-        stage('Artifact Construction') {
+        stage('Clean the project') {
             steps {
                     sh 'mvn clean'
-                sh 'mvn compile'
-		    sh 'mvn package'
                  
-            }
-        }
-               stage('Mvn SonarQube ') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123'
             }
         }
 		stage('JUnit and Mockito Test'){
@@ -45,6 +35,20 @@ pipeline {
             }
        
         }
+		
+		stage('Artifact Construction') {
+            steps {
+		    sh 'mvn package -DskipTests'
+                 
+            }
+        }
+		
+               stage('Mvn SonarQube ') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123'
+            }
+        }
+
 
 		stage("Nexus"){
            steps{
@@ -52,22 +56,21 @@ pipeline {
                sh "mvn deploy -DskipTests"
              }
               }
-		stage("Docker Build and Run") {
+		stage("Docker Build and Push ") {
             steps {
-                // Build the Docker image
+                
                 sh 'docker build -t  bentibahedi/bentibahedi-5bi6-kadem .'
                 sh "docker login -u bentibahedi -p Taraji1919"
-
-                // Run the Docker container in detached mode (-d)
-                sh 'docker run -d -p 8089:8089 bentibahedi/bentibahedi-5bi6-kadem  '
-
-                // Push the Docker image to a Docker registry (e.g., Docker Hub)
                 sh 'docker push  bentibahedi/bentibahedi-5bi6-kadem '
-
-                // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
-                sh 'docker-compose up -d'
+                
             }
         }
+		stage("docker Compose Spring SQL"){
+			steps{
+				sh "docker login -u hedi.bentiba@esprit.tn -p Taraji1919"
+				sh 'docker-compose up -d'
+			}
+		}
 	 
 		
        
