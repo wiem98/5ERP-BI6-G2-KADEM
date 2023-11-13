@@ -26,13 +26,13 @@ pipeline {
         }
                stage('Mvn SonarQube ') {
             steps {
-                sh 'mvn sonar:sonar  -Dsonar.host.url=http://192.168.2.15:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
 		stage("Nexus"){
            steps{
                
-               sh "mvn deploy -Durl=http://192.168.2.15/repository/maven-releases/ -Drepository.username=admin -Drepository.password=nexus -Dmaven.test.skip"
+               sh "mvn deploy -DskipTests"
              }
               }
 		stage("Docker Build and Run") {
