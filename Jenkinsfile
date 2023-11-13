@@ -26,7 +26,7 @@ pipeline {
         }
                stage('Mvn SonarQube ') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123'
             }
         }
 		stage('JUnit and Mockito Test'){
