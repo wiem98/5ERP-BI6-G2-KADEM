@@ -16,7 +16,7 @@ pipeline {
         
      
           
-        stage('Mvn Compile&Mvn Clean') {
+        stage('Artifact Construction') {
             steps {
                     sh 'mvn clean'
                 sh 'mvn compile'
