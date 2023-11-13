@@ -1,6 +1,6 @@
 package tn.esprit.spring.kaddem.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +16,13 @@ import java.util.Set;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ContratServiceImpl implements IContratService{
-@Autowired
-ContratRepository contratRepository;
-@Autowired
-	EtudiantRepository etudiantRepository;
+
+	public final ContratRepository contratRepository;
+	public final EtudiantRepository etudiantRepository;
 	public List<Contrat> retrieveAllContrats(){
-		return (List<Contrat>) contratRepository.findAll();
+		return contratRepository.findAll();
 	}
 
 	public Contrat updateContrat (Contrat  ce){
@@ -38,8 +38,8 @@ ContratRepository contratRepository;
 	}
 
 	public  void removeContrat(Integer idContrat){
-		Contrat c=retrieveContrat(idContrat);
-		contratRepository.delete(c);
+		Contrat contact = retrieveContrat(idContrat);
+		contratRepository.delete(contact);
 	}
 
 
@@ -49,9 +49,9 @@ ContratRepository contratRepository;
 		Contrat ce=contratRepository.findByIdContrat(idContrat);
 		Set<Contrat> contrats= e.getContrats();
 		Integer nbContratssActifs=0;
-		if (contrats.size()!=0) {
+		if (!contrats.isEmpty()) {
 			for (Contrat contrat : contrats) {
-				if (((contrat.getArchive())!=null)&& ((contrat.getArchive())!=false))  {
+				if (((contrat.getArchive())!=null)&& ((contrat.getArchive())))  {
 					nbContratssActifs++;
 				}
 			}
@@ -101,7 +101,7 @@ ContratRepository contratRepository;
 			else if (contrat.getSpecialite()== Specialite.RESEAUX) {
 				chiffreAffaireEntreDeuxDates+=(difference_In_months*350);
 			}
-			else //if (contrat.getSpecialite()== Specialite.SECURITE)
+			else
 			 {
 				 chiffreAffaireEntreDeuxDates+=(difference_In_months*450);
 			}
