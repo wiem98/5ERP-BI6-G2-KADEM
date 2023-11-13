@@ -1,25 +1,38 @@
-version: "3.8"
+version: '3'
 services:
-  mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  kaddem:
+    image: bentibahedi-5bi6-kadem:latest
+    restart: on-failure
     ports:
-      - "3307:3306"
-    volumes:
-      - db:/var/lib/mysql
-
-  kaddemProject:
+      - '8089:8089'
     depends_on:
-      - mysqldb
-    image: bentibahedi/bentibahedi-5bi6-kadem
-    environment:
-      MYSQL_ROOT_PASSWORD: ""
+      - mysql
+    networks:
+      - mynetwork
+    volumes:
+      - .m2:/root/.m2
+  mysql:
+    image: mysql:latest
+    restart: always
     ports:
-      - "8089:8089"
-    stdin_open: true
-    tty: true
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: hedi
+      MYSQL_DATABASE: hedibentiba
+      MYSQL_USER: hedi
+      MYSQL_PASSWORD: hedi
+    networks:
+      - mynetwork
+    volumes:
+      - mysql-data:/var/lib/mysql
+ 
+
+networks:
+  mynetwork:
+    driver: bridge
 
 volumes:
-  db:
+  mysql-data:
+  .m2:
+  
+   
