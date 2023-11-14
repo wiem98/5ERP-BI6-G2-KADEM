@@ -12,6 +12,9 @@ services:
       - '3306:3306'
     expose:
       - '3306'
+    networks:
+      - backend-net
+
 
   spring-app:
     image: rimboukari2/spring-app:1.0
@@ -29,7 +32,11 @@ services:
              "spring.jpa.hibernate.ddl-auto" : "update",
              "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect"
            }'
+    networks:
+      - backend-net
 
+networks:
+  backend-net :
 
 volumes:
   my-db:
