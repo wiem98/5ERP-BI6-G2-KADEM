@@ -89,6 +89,19 @@ pipeline {
                   sh 'docker-compose up -d '
               }
               }
+		stage('Configure Grafana') {
+    steps {
+        script {
+            
+            def newDashboardURL = 'http://192.168.188.252:3000/d/haryan-jenkins/kaddem-application?orgId=1&from=now-5m&to=now'
+
+            // Exécutez les commandes pour configurer Grafana, par exemple, via l'API REST de Grafana
+            // Exemple: Créez un tableau de bord via l'API Grafana
+            sh "curl -X POST -H \"Content-Type: application/json\" -d '{\"dashboard\": {...}}' ${newDashboardURL}"
+        }
+    }
+}
+
 		
              stage('Cleaning up') {
          steps {
