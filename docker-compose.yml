@@ -1,6 +1,6 @@
 services:
   mysqldb:
-    container_name: mysql
+    container_name: mysqldb
     image: mysql
     environment:
       MYSQL_USER: 'root'
