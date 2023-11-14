@@ -115,5 +115,13 @@ Rim''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rim.boukari@
                 }
             }
         }
+
+        stage('Docker Compose'){
+            steps{
+                script {
+                    sh "docker-compose up -d"
+                }
+            }
+        }
     }
 }

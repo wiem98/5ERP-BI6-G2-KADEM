@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EquipeServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kaddem</a> &gt; <a href="index.source.html" class="el_package">tn.esprit.spring.kaddem.services</a> &gt; <span class="el_source">EquipeServiceImpl.java</span></div><h1>EquipeServiceImpl.java</h1><pre class="source lang-java linenums">package tn.esprit.spring.kaddem.services;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import tn.esprit.spring.kaddem.entities.Contrat;
+import tn.esprit.spring.kaddem.entities.Equipe;
+import tn.esprit.spring.kaddem.entities.Etudiant;
+import tn.esprit.spring.kaddem.entities.Niveau;
+import tn.esprit.spring.kaddem.repositories.EquipeRepository;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+<span class="fc" id="L16">@Slf4j</span>
+<span class="fc" id="L17">@RequiredArgsConstructor</span>
+@Service
+public class EquipeServiceImpl implements IEquipeService {
+
+    private final EquipeRepository equipeRepository;
+
+
+    public List&lt;Equipe&gt; retrieveAllEquipes() {
+<span class="fc" id="L25">        return (List&lt;Equipe&gt;) equipeRepository.findAll();</span>
+    }
+
+    public Equipe addEquipe(Equipe e) {
+<span class="fc" id="L29">        return (equipeRepository.save(e));</span>
+    }
+
+    public void deleteEquipe(Integer idEquipe) {
+<span class="nc" id="L33">        Equipe e = retrieveEquipe(idEquipe);</span>
+<span class="nc" id="L34">        equipeRepository.delete(e);</span>
+<span class="nc" id="L35">    }</span>
+
+    public Equipe retrieveEquipe(Integer equipeId) {
+<span class="pc" id="L38">        return equipeRepository.findById(equipeId).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid equipe Id:&quot; + equipeId));</span>
+    }
+
+    public Equipe updateEquipe(Equipe e) {
+<span class="fc" id="L42">        return (equipeRepository.save(e));</span>
+    }
+
+    public void evoluerEquipes() {
+<span class="nc" id="L46">        List&lt;Equipe&gt; equipes = (List&lt;Equipe&gt;) equipeRepository.findAll();</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        for (Equipe equipe : equipes) {</span>
+<span class="nc bnc" id="L48" title="All 4 branches missed.">            if ((equipe.getNiveau().equals(Niveau.JUNIOR)) || (equipe.getNiveau().equals(Niveau.SENIOR))) {</span>
+<span class="nc" id="L49">                List&lt;Etudiant&gt; etudiants = (List&lt;Etudiant&gt;) equipe.getEtudiants();</span>
+<span class="nc" id="L50">                int nbEtudiantsAvecContratsActifs = 0;</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                for (Etudiant etudiant : etudiants) {</span>
+<span class="nc" id="L52">                    Set&lt;Contrat&gt; contrats = etudiant.getContrats();</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">                    for (Contrat contrat : contrats) {</span>
+<span class="nc" id="L54">                        Date dateSysteme = new Date();</span>
+<span class="nc" id="L55">                        long differenceInTime = dateSysteme.getTime() - contrat.getDateFinContrat().getTime();</span>
+<span class="nc" id="L56">                        long differenceInYears = (differenceInTime / (1000L * 60 * 60 * 24 * 365));</span>
+<span class="nc bnc" id="L57" title="All 4 branches missed.">                        if ((!contrat.getArchive()) &amp;&amp; (differenceInYears &gt; 1)) {</span>
+<span class="nc" id="L58">                            nbEtudiantsAvecContratsActifs++;</span>
+<span class="nc" id="L59">                            break;</span>
+                        }
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                        if (nbEtudiantsAvecContratsActifs &gt;= 3) break;</span>
+<span class="nc" id="L62">                    }</span>
+<span class="nc" id="L63">                }</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if (nbEtudiantsAvecContratsActifs &gt;= 3) {</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">                    if (equipe.getNiveau().equals(Niveau.JUNIOR)) {</span>
+<span class="nc" id="L66">                        equipe.setNiveau(Niveau.SENIOR);</span>
+<span class="nc" id="L67">                        equipeRepository.save(equipe);</span>
+<span class="nc" id="L68">                        break;</span>
+                    }
+<span class="nc bnc" id="L70" title="All 2 branches missed.">                    if (equipe.getNiveau().equals(Niveau.SENIOR)) {</span>
+<span class="nc" id="L71">                        equipe.setNiveau(Niveau.EXPERT);</span>
+<span class="nc" id="L72">                        equipeRepository.save(equipe);</span>
+<span class="nc" id="L73">                        break;</span>
+                    }
+                }
+            }
+
+<span class="nc" id="L78">        }</span>
+
+<span class="nc" id="L80">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
