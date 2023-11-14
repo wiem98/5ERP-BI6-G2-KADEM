@@ -15,10 +15,21 @@ pipeline {
         stage('Testing maven') {
             steps {
                 sh """mvn -version"""
+		 sh 'mvn jacoco:report'
                  
             }
         }
-       
+       stage('Publish JaCoCo coverage report') {
+            steps {
+                // Publish the JaCoCo coverage report
+                step([$class: 'JacocoPublisher',
+                      execPattern: '**/target/jacoco.exec',
+                      classPattern: '**/classes',
+                      sourcePattern: '**/src',
+                      exclusionPattern: '/target/**/,**/*Test,**/*_javassist/**'
+                ])
+            }
+        }
         stage('Mvn Clean') {
             steps {
                 sh 'mvn clean'
