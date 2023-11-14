@@ -8,7 +8,7 @@ pipeline {
         NEXUS_CREDENTIAL_ID = "nexus-credentials"
     }
   stages {
-        stage('Building') {
+        stage('Compiling') {
             steps {
                 script {
                     sh 'mvn clean compile'
