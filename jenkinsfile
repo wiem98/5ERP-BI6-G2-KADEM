@@ -2,12 +2,12 @@ pipeline {
 
         agent any
         stages {
-                stage('Checkout Git'){
+                stage('Git'){
                    
                 steps{
                         echo 'Pulling...';
                         git branch: 'RihabSOUID-5BI6-G2',
-                        url : 'https://github.com/wiem98/5ERP-BI6-G2-KADEM.git';
+                        url : 'https://github.com/wiem98/5erp-bi6-g2-kadem.git';
                          sh """mvn -version"""
                     }
                 }
@@ -23,11 +23,67 @@ pipeline {
             steps {
                     sh 'mvn clean'
                 sh 'mvn compile'
-		    sh 'mvn package'
+		   
                  
             }
         }
-       
-   }
+        stage('MOCKITO') {
+            steps {
+                sh 'mvn test'
+                   }
+        }
+       stage('Mvn SonarQube ') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+            }
+        }
+        
+       stage('Nexus Deployment') {
+    steps {
+            sh 'mvn deploy -DskipTests'
+         }
 }
+stage('DOCKER IMAGE') {
+            steps{
+                script {
+                    sh 'docker rm -f rihab2023/5erp-bi6-g2-kadem '
+                    sh 'docker build -t rihab2023/5erp-bi6-g2-kadem .'
+                }
+            }
+        }
+        stage('DOCKER HUB') {
+            steps{
+                script {
+                        sh 'docker login -u rihab2023 -p rihab2023'  
+                        sh 'docker push rihab2023/5erp-bi6-g2-kadem'
+                }
+            }
+        }
+        stage('DOCKER-COMPOSE') {
+            steps {
+            sh 'docker compose up -d' 
+            }
+        } 
+        stage('PROMETHUS & GRAFANA') {
+            steps {
+                echo 'started grafana' 
+                
+            }
+        } 
+         stage('MAIL') {
+            steps {
+                echo "MAIL SUCCESS"
+            }
+        }
+    }
+
+    post {
+        always {
+            mail to: "rihab.souid@esprit.tn",
+            subject: "Email success",
+            body: "Je suis ravi de vous informer que le pipeline Jenkins de mon projet khaddem a été construit avec succès! Toutes les étapes du pipeline, du retrait du code à l'envoi des e-mails personnalisés, ont été achevées sans le moindre problème."
+        }
+    }
+}
+
 
