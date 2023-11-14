@@ -37,6 +37,7 @@ services:
 
 networks:
   backend-net :
+    driver: local
 
 volumes:
   my-db:
