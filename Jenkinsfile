@@ -57,6 +57,14 @@ pipeline {
             }
         }
 
+stage('Sending email'){
+           steps {
+            mail bcc: '', body: '''salut c'est nour,
+            Pipeline DevOps avec succès.
+            Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'kchaou.nour@esprit.tn'
+            }
+       }
+
 
    }
 }
